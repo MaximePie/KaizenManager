@@ -7,7 +7,7 @@ export default  function TaskForm({runMutation}) {
 
   return (
     <div style={formStyle}>
-      <h3>Créez votre tâche ici</h3>
+      <h3>Nouvelle tâche</h3>
       <label htmlFor="" style={{
         marginBottom: "1rem",
         display: "flex",
@@ -28,7 +28,7 @@ export default  function TaskForm({runMutation}) {
         </span>
         <input type="text" onChange={(event) => setCurrentQuantity(event.target.value)} value={currentQuantity}/>
       </label>
-      <button onClick={createTask}>Créer une tâche</button>
+      <button onClick={createTask}>Créer</button>
     </div>
   );
 
@@ -38,12 +38,15 @@ export default  function TaskForm({runMutation}) {
       currentQuantity,
       lastSuccess: null,
     })
-      .then(response => console.log(response));
+      .then(response => {
+        setTaskWording('');
+        setCurrentQuantity('');
+      });
   }
 }
 
 const formStyle = {
-  border: "solid",
+  borderRadius: "4px",
   margin: "1rem",
   padding: "1rem",
   display: "flex",

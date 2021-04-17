@@ -20,7 +20,6 @@ export default function TasksList() {
 
           return (
             <div className="TasksList">
-              <p>{accessUrl}</p>
               {React.Children.toArray(tasks.map(task => {
                 const updatePath = `/users/${user.uid}/tasks/${task[0]}`;
 

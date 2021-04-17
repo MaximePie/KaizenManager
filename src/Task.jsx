@@ -8,10 +8,13 @@ export default function Task({task: initialTask, runMutation}) {
 
   return (
     <div className="Task">
-      <p>
-        {wording} - {currentQuantity}
-        <button onClick={finishTask}>OK</button>
-      </p>
+      <span>
+        {wording}
+      </span>
+      <span>
+            {currentQuantity}
+      </span>
+      <button onClick={finishTask}>OK</button>
     </div>
   )
 
