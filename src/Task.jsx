@@ -20,18 +20,17 @@ export default function Task({task: initialTask, runMutation}) {
 
 
   function finishTask() {
-    console.log(currentQuantity);
     const date = moment().format('L');
     runMutation({
       wording,
       currentQuantity: parseInt(currentQuantity) + 1,
       lastSuccess: date,
     }).then(response => {
-      // Updating the current task to refresh the display
-      const currentTask = [];
-      currentTask.push(updatedTask[0]);
-      currentTask.push(response.value);
-      setUpdatedTask(currentTask);
+      // // Updating the current task to refresh the display
+      // const currentTask = [];
+      // currentTask.push(updatedTask[0]);
+      // currentTask.push(response.value);
+      // setUpdatedTask(currentTask);
     });
   }
 }

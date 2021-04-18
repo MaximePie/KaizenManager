@@ -26,7 +26,7 @@ export default function TasksList() {
                 return (
                   <FirebaseDatabaseMutation path={updatePath} type="set">
                     {({runMutation}) => (
-                      <Task task={task} runMutation={runMutation}/>
+                      <Task key={task[0]} task={task} runMutation={runMutation}/>
                     )
                     }
                   </FirebaseDatabaseMutation>
