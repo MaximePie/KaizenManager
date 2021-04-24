@@ -11,17 +11,15 @@ export default function Task({task: initialTask, runMutation}) {
       <span>
         {wording}
       </span>
+      <button onClick={incrementTask}>+</button>
       <span>
         {currentQuantity} / {objective}
       </span>
-      <button onClick={incrementTask}>+</button>
       <button onClick={finishTask}>OK</button>
     </div>
   )
 
   function incrementTask() {
-    console.log(currentQuantity);
-    console.log(objective);
     if (currentQuantity + 1 === objective) {
       finishTask();
     }

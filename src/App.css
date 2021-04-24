@@ -1,6 +1,6 @@
 .Task {
     display: grid;
-    grid-template-columns: 160px 40px 30px 30px;
+    grid-template-columns: 160px 30px 50px 30px;
     grid-column-gap: 0.25rem;
     margin: 1rem;
 }
