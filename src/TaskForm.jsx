@@ -3,7 +3,7 @@ import React, {useState} from "react";
 export default  function TaskForm({runMutation}) {
 
   const [taskWording, setTaskWording] = useState('');
-  const [currentQuantity, setCurrentQuantity] = useState('');
+  const [objective, setObjective] = useState('');
 
   return (
     <div style={formStyle}>
@@ -24,9 +24,9 @@ export default  function TaskForm({runMutation}) {
         flexDirection: "column",
       }}>
         <span style={{marginBottom: "0.25rem"}}>
-          Quantité
+          Objectif
         </span>
-        <input type="text" onChange={(event) => setCurrentQuantity(event.target.value)} value={currentQuantity}/>
+        <input type="text" onChange={(event) => setObjective(event.target.value)} value={objective}/>
       </label>
       <button onClick={createTask}>Créer</button>
     </div>
@@ -35,12 +35,13 @@ export default  function TaskForm({runMutation}) {
   function createTask() {
     runMutation({
       wording: taskWording,
-      currentQuantity,
+      objective,
+      currentQuantity: 0,
       lastSuccess: null,
     })
       .then(response => {
         setTaskWording('');
-        setCurrentQuantity('');
+        setObjective('');
       });
   }
 }

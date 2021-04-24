@@ -4,7 +4,7 @@ import moment from "moment";
 export default function Task({task: initialTask, runMutation}) {
   const [updatedTask, setUpdatedTask] = useState(initialTask);
   // eslint-disable-next-line no-unused-vars
-  const [taskId, {currentQuantity, wording}] = updatedTask;
+  const [taskId, {currentQuantity, wording, objective}] = updatedTask;
 
   return (
     <div className="Task">
@@ -12,18 +12,38 @@ export default function Task({task: initialTask, runMutation}) {
         {wording}
       </span>
       <span>
-            {currentQuantity}
+        {currentQuantity} / {objective}
       </span>
+      <button onClick={incrementTask}>+</button>
       <button onClick={finishTask}>OK</button>
     </div>
   )
 
+  function incrementTask() {
+    console.log(currentQuantity);
+    console.log(objective);
+    if (currentQuantity + 1 === objective) {
+      finishTask();
+    }
+    else {
+      runMutation({
+        ...updatedTask[1],
+        currentQuantity: parseInt(currentQuantity) + 1,
+      }).then((response) => {
+        setUpdatedTask([null, response.value]);
+      })
+    }
+
+  }
+
 
   function finishTask() {
     const date = moment().format('L');
+    const updatedObjectiveValue = objective !== undefined ? parseInt(objective) + 1 : 1;
     runMutation({
       wording,
-      currentQuantity: parseInt(currentQuantity) + 1,
+      currentQuantity: 0,
+      objective: updatedObjectiveValue,
       lastSuccess: date,
     }).then(response => {
       // // Updating the current task to refresh the display

@@ -22,7 +22,6 @@ export default function TasksList() {
             <div className="TasksList">
               {React.Children.toArray(tasks.map(task => {
                 const updatePath = `/users/${user.uid}/tasks/${task[0]}`;
-
                 return (
                   <FirebaseDatabaseMutation path={updatePath} type="set">
                     {({runMutation}) => (
